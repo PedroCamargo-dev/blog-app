@@ -18,21 +18,21 @@ export default function Input({
   placeholder,
 }: InputProps) {
   return (
-    <div className="mt-44 ml-10">
-      <label htmlFor={name} >
+    <>
+      <label htmlFor={name}>
         {label}
       </label>
       <input
         id={id}
         name={name}
         type={type}
-        className={`${extraClass} appearance-none relative block
-        px-3 py-2 border border-gray-300
+        className={`${extraClass} appearance-none block
+        px-3 py-2 mb-3 h-11 w-64 rounded-md border border-gray-300
         placeholder-gray-500 text-gray-900
         focus:outline-none focus:ring-indigo-600
         focus:border-indigo-600 focus:z-10 sm:text-sm duration-500`}
         placeholder={placeholder}
       />
-    </div>
+    </>
   );
 }
