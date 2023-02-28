@@ -1,4 +1,4 @@
-Esse sistema ainda está em fase de desenvolvimento e estudos de novas implementações, técnologias e estudos.
+Esse sistema ainda está em fase de desenvolvimento e estudos de novas implementações, tecnologias e estudos.
 
 As tecnologias utilizadas são:
 
