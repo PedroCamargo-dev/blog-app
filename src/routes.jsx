@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Relevants from "./pages/Relevants";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Recents from "./pages/Recents";
@@ -11,7 +11,7 @@ export default function AppRouter() {
     <Router>
       <Navbar />
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<Relevants />} />
         <Route path="/recentes" element={<Recents />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastrar" element={<Register />} />

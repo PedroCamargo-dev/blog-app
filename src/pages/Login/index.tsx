@@ -1,7 +1,7 @@
-import Button from "../components/core/button";
-import Container from "../components/core/container";
-import Form from "../components/core/form";
-import Input from "../components/core/input";
+import Button from "../../components/core/button";
+import Container from "../../components/core/container";
+import Form from "../../components/core/form";
+import Input from "../../components/core/input";
 
 export default function Login() {
   return (
