@@ -1,20 +1,13 @@
 import moment from "moment";
 import Container from "../../components/core/container";
-import Posts from "../../components/Posts";
+import Posts from "../../features/Posts";
 
 export default function Recents() {
-  const timestamp = moment(
-    "2023-02-21 18:07:00",
-  ).fromNow();
+  const timestamp = moment("2023-02-21 18:07:00").fromNow();
 
   let rows = [];
   for (let i = 1; i <= 5; i++) {
-    rows.push(
-      <Posts
-        title={`Teste${i}`}
-        author="Pedro"
-      />,
-    );
+    rows.push(<Posts title={`Teste${i}`} author="Pedro" />);
   }
 
   const teste = [
@@ -95,9 +88,7 @@ export default function Recents() {
       <ol className="border-l border-neutral-300 dark:border-neutral-500 ">
         {teste.map((teste, i) => (
           <Posts
-            title={`${i + 1}. ${
-              teste.title
-            }`}
+            title={`${i + 1}. ${teste.title}`}
             author={teste.author}
           />
         ))}
