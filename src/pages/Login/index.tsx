@@ -1,10 +1,10 @@
 import Container from "../../components/core/container";
-import LoginComponent from "../../features/Login";
+import Auth from "../../components/features/Auth/";
 
 export default function Login() {
   return (
     <Container>
-      <LoginComponent />
+      <Auth />
     </Container>
   );
 }

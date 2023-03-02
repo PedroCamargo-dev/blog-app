@@ -12,11 +12,7 @@ export default function Form({
   onSubmit,
 }: FormProps) {
   return (
-    <form
-      action="#"
-      className="max-w-lg"
-      onSubmit={onSubmit}
-    >
+    <form className="max-w-lg" onSubmit={onSubmit}>
       <h2 className="text-left text-3xl mb-4 text-gray-900">
         {title}
       </h2>

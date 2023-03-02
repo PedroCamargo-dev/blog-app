@@ -1,6 +1,6 @@
 import moment from "moment";
 import Container from "../../components/core/container";
-import Posts from "../../features/Posts";
+import Posts from "../../components/features/Posts";
 
 export default function Recents() {
   const timestamp = moment("2023-02-21 18:07:00").fromNow();

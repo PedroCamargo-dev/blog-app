@@ -1,4 +1,4 @@
-import Navbar from "./features/Navbar";
+import Navbar from "./components/features/Navbar";
 import Relevants from "./pages/Relevants";
 import Login from "./pages/Login";
 import Register from "./pages/Register";

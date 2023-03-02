@@ -10,43 +10,69 @@ As tecnologias utilizadas são:
 
 ```lua
 src/
-  |- components/
-  |   |- shared/
-  |   |   |- Button/
-  |   |   |   |- Button.js
-  |   |   |   |- Button.css
-  |   |   |- Input/
-  |   |   |   |- Input.js
-  |   |   |   |- Input.css
-  |   |- feature1/
-  |   |   |- Feature1.js
-  |   |   |- Feature1.css
-  |   |   |- Feature1.test.js
-  |   |- feature2/
-  |   |   |- Feature2.js
-  |   |   |- Feature2.css
-  |   |   |- Feature2.test.js
-  |- domain/
-  |   |- entities/
-  |   |   |- User.js
-  |   |   |- Product.js
-  |   |- repositories/
-  |   |   |- UserRepository.js
-  |   |   |- ProductRepository.js
-  |   |- services/
-  |   |   |- AuthService.js
-  |   |   |- ProductService.js
-  |- pages/
-  |   |- HomePage/
-  |   |   |- HomePage.js
-  |   |   |- HomePage.css
-  |   |- LoginPage/
-  |   |   |- LoginPage.js
-  |   |   |- LoginPage.css
-  |- utils/
-  |   |- api.js
-  |   |- auth.js
-  |   |- validation.js
-  |- App.js
-  |- index.js
+├── api/
+│   ├── apiConfig.js
+│   ├── endpoints.js
+│   └── index.js
+├── components/
+│   ├── common/
+│   │   ├── Button/
+│   │   │   ├── Button.js
+│   │   │   └── index.js
+│   │   ├── Input/
+│   │   │   ├── Input.js
+│   │   │   └── index.js
+│   │   └── index.js
+│   ├── features/
+│   │   ├── Auth/
+│   │   │   ├── Auth.js
+│   │   │   ├── components/
+│   │   │   │   ├── LoginForm/
+│   │   │   │   │   ├── LoginForm.js
+│   │   │   │   │   └── index.js
+│   │   │   │   └── index.js
+│   │   │   ├── index.js
+│   │   │   ├── services/
+│   │   │   │   ├── authService.js
+│   │   │   │   └── index.js
+│   │   │   └── types.js
+│   │   └── index.js
+│   └── index.js
+├── hooks/
+│   ├── useAuth.js
+│   ├── useDebounce.js
+│   └── index.js
+├── index.js
+├── pages/
+│   ├── Dashboard/
+│   │   ├── Dashboard.js
+│   │   └── index.js
+│   ├── Home/
+│   │   ├── Home.js
+│   │   └── index.js
+│   └── index.js
+├── routes/
+│   ├── PrivateRoute/
+│   │   ├── PrivateRoute.js
+│   │   └── index.js
+│   └── index.js
+├── services/
+│   ├── apiService.js
+│   ├── authService.js
+│   └── index.js
+├── store/
+│   ├── actions/
+│   │   ├── authActions.js
+│   │   └── index.js
+│   ├── reducers/
+│   │   ├── authReducer.js
+│   │   └── index.js
+│   ├── selectors/
+│   │   ├── authSelectors.js
+│   │   └── index.js
+│   ├── store.js
+│   └── types.js
+└── utils/
+    ├── constants.js
+    └── index.js
 ```

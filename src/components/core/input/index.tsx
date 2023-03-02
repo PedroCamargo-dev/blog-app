@@ -9,6 +9,8 @@ interface InputProps {
   extraClass?: string;
   placeholder?: string;
   onChange?: any;
+  onKeyUp?: any;
+  erros?: string;
 }
 
 export default function Input({
@@ -20,6 +22,8 @@ export default function Input({
   value,
   placeholder,
   onChange,
+  onKeyUp,
+  erros,
 }: InputProps) {
   return (
     <>
@@ -30,6 +34,7 @@ export default function Input({
         type={type}
         value={value}
         onChange={onChange}
+        onKeyUp={onKeyUp}
         className={`${extraClass} appearance-none block
         px-3 py-2 mb-3 h-11 w-64 rounded-md border border-gray-300
         placeholder-gray-500 text-gray-900
@@ -37,6 +42,7 @@ export default function Input({
         focus:border-indigo-600 focus:z-10 sm:text-sm duration-500`}
         placeholder={placeholder}
       />
+      <p className="w-64 mb-3 text-red-500">{erros}</p>
     </>
   );
 }
