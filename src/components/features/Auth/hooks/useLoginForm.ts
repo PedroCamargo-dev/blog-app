@@ -6,12 +6,19 @@ import { loginSchema } from '../components/LoginForm/schema';
 
 export const useLoginForm = ({ email, password }: AuthProps) => {
   const [error, setError] = useState();
-  const [errorForm, setErrorForm] = useState({ email, password });
+  const [errorForm, setErrorForm] = useState<AuthProps>();
   const navigate = useNavigate();
 
-  const teste = async (e: any) => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     try {
       await loginSchema.validate({ email, password }, { abortEarly: false });
+      try {
+        await login({ email, password });
+        navigate("/recentes");
+      } catch (error: any) {
+        setError(error.message);
+      }
     } catch (err: any) {
       const validationErrors: any = {};
       err.inner.forEach((error: any) => {
@@ -19,17 +26,7 @@ export const useLoginForm = ({ email, password }: AuthProps) => {
       });
       setErrorForm(validationErrors);
     }
-  }
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      await login({ email, password });
-      navigate("/recentes");
-    } catch (error: any) {
-      setError(error.message);
-    }
   };
 
-  return { error, errorForm, handleSubmit, teste };
+  return { error, errorForm, handleSubmit };
 };

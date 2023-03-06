@@ -7,11 +7,10 @@ import { useLoginForm } from "../../hooks/useLoginForm";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { error, errorForm, handleSubmit, teste } =
-    useLoginForm({
-      email,
-      password,
-    });
+  const { error, errorForm, handleSubmit } = useLoginForm({
+    email,
+    password,
+  });
 
   return (
     <>
@@ -23,9 +22,8 @@ export default function Login() {
           type="email"
           placeholder=""
           value={email}
-          erros={errorForm.email}
+          erros={errorForm?.email}
           onChange={(e: any) => setEmail(e.target.value)}
-          onKeyUp={teste}
         />
         <Input
           id="password"
@@ -34,9 +32,8 @@ export default function Login() {
           type="password"
           placeholder=""
           value={password}
-          erros={errorForm.password}
+          erros={errorForm?.password}
           onChange={(e: any) => setPassword(e.target.value)}
-          onKeyUp={teste}
         />
         <Button label="Login" />
       </Form>
