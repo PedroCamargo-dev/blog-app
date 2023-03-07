@@ -2,7 +2,7 @@ import Form from "../../../../core/form";
 import Button from "../../../../core/button";
 import Input from "../../../../core/input";
 import { useState } from "react";
-import { useLoginForm } from "../../hooks/useLoginForm";
+import { useLoginForm } from "../../hooks/";
 
 export default function Login() {
   const [email, setEmail] = useState("");
