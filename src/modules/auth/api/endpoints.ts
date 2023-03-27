@@ -3,4 +3,8 @@ export const endpoints = {
     url: '/user/login',
     method: 'POST',
   },
+  register: {
+    url: '/user/register',
+    method: 'POST',
+  },
 }
