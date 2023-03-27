@@ -1,19 +1,21 @@
 import { AuthProps } from '../interfaces/IAuth'
 import { res } from '../api'
 import jwt_decode from 'jwt-decode'
-import { setCookie } from 'cookies-next'
+import { login } from '../config'
 
-export const auth = async ({ email, password }: AuthProps) => {
+const auth = async ({ email, password }: AuthProps) => {
   try {
     const response = await res.authToken({ email, password })
     if (!response.statusCode) {
-      setCookie('accessToken', response.data.accessToken)
+      login(response.data.accessToken)
       const token = jwt_decode(response.data.accessToken)
       return token
     }
     return response
   } catch (err) {
-    const error = err.response.data.message
+    const error = err.response.data
     return error
   }
 }
+
+export default auth
