@@ -2,11 +2,12 @@ import { isAuthenticated } from '@/modules/auth/config'
 import { useState } from 'react'
 import { MdClose, MdFolderOpen, MdOutlineMenu } from 'react-icons/md'
 import { useSelector } from 'react-redux'
+import Dropdown from './Dropdown'
 import NavItem from './NavItem'
 
 export default function Navbar() {
   const [open, setOpen] = useState(true)
-  const { user } = useSelector((state) => state.userReducer)
+  const { user } = useSelector((state: any) => state.userReducer)
 
   return (
     <div className="shadown-md fixed top-0 left-0 w-full text-white">
@@ -32,7 +33,7 @@ export default function Navbar() {
           <NavItem title="Recentes" href="/Recentes" />
           <NavItem title="Relevantes" href="/Relevantes" />
           {isAuthenticated() ? (
-            <NavItem title={user.name} href={'user/' + user.username} />
+            <Dropdown title="Profile" />
           ) : (
             <>
               <NavItem title="Login" href="/Login" />
