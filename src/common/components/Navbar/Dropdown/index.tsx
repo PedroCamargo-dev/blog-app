@@ -14,12 +14,20 @@ export default function Dropdown({ title }: any) {
       >
         {title}
       </ul>
-      <ul
-        className={`w-full bg-dark-blue-500 p-5 py-4 
-        ${open ? 'show' : 'hidden'}`}
+      <div
+        className={`shadow-3xl fixed -ml-9 h-auto w-full rounded-md bg-dark-blue-500 md:ml-5 md:mt-[25rem] md:w-72
+        ${!open ? 'show' : 'hidden'}`}
       >
-        <NavItem title={user.name} href="#" />
-      </ul>
+        <NavItem extrasClass="py-3 ml-20" title={user.name} href="#" />
+        <NavItem
+          extrasClass="py-3 ml-20 "
+          title="Publicar novo conteúdo"
+          href="#"
+        />
+        <NavItem extrasClass="py-3 ml-20 " title="Meus conteúdos" href="#" />
+        <NavItem extrasClass="py-3 ml-20 " title="Editar perfil" href="#" />
+        <NavItem extrasClass="py-3 ml-20" title="Deslogar" href="#" />
+      </div>
     </>
   )
 }

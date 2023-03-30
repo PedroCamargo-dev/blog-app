@@ -30,14 +30,30 @@ export default function Navbar() {
           !open ? 'top-11 opacity-100' : 'top-[-490px] '
         }`}
         >
-          <NavItem title="Recentes" href="/Recentes" />
-          <NavItem title="Relevantes" href="/Relevantes" />
+          <NavItem
+            extrasClass="md:my-0 md:ml-8"
+            title="Recentes"
+            href="/Recentes"
+          />
+          <NavItem
+            extrasClass="md:my-0 md:ml-8"
+            title="Relevantes"
+            href="/Relevantes"
+          />
           {isAuthenticated() ? (
             <Dropdown title="Profile" />
           ) : (
             <>
-              <NavItem title="Login" href="/Login" />
-              <NavItem title="Cadastrar" href="/Cadastrar" />
+              <NavItem
+                extrasClass="md:my-0 md:ml-8"
+                title="Login"
+                href="/Login"
+              />
+              <NavItem
+                extrasClass="md:my-0 md:ml-8"
+                title="Cadastrar"
+                href="/Cadastrar"
+              />
             </>
           )}
         </ul>
