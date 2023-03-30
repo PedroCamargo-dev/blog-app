@@ -1,6 +1,7 @@
 import Button from '@/common/components/Button'
 import Form from '@/common/components/Form'
 import Input from '@/common/components/Input'
+import Toast from '@/common/components/Toast'
 import { useRegister } from '../../hooks/useRegister'
 
 export default function Register() {
@@ -8,6 +9,7 @@ export default function Register() {
 
   return (
     <Form onSubmit={handleSubmit(onFormSubmit)} title="Cadastrar">
+      <Toast />
       <Input
         label="Nome Completo"
         type="text"

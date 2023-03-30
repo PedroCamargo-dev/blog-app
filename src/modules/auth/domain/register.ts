@@ -11,7 +11,7 @@ const registerUser = async ({
     const response = await res.register({ username, email, name, password })
     return response
   } catch (err) {
-    const error = err.response.data.message
+    const error = err.response.data
     return error
   }
 }

@@ -4,6 +4,7 @@ import registerUser from '../../domain/register'
 import router from 'next/router'
 import { RegisterProps } from '../../interfaces/IRegister'
 import { registerSchema } from '../components/register/schema'
+import { toast } from 'react-toastify'
 
 export const useRegister = () => {
   const {
@@ -22,12 +23,13 @@ export const useRegister = () => {
   }: RegisterProps) => {
     const response = await registerUser({ username, email, name, password })
 
-    try {
-      if (response.status === 201) {
-        router.push('/login')
-      }
-    } catch (err) {
-      console.log(err)
+    if (response.status === 201) {
+      toast.success('Registered success!')
+      setTimeout(() => {
+        router.push('/Login')
+      }, 2000)
+    } else {
+      toast.error(response.message)
     }
   }
 

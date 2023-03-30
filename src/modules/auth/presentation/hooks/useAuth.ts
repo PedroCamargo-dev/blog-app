@@ -6,6 +6,7 @@ import auth from '../../domain/auth'
 import { loginUser } from '../../store/slice'
 import { useDispatch } from 'react-redux'
 import router from 'next/router'
+import { toast } from 'react-toastify'
 
 export const useAuth = () => {
   const dispatch = useDispatch()
@@ -21,13 +22,14 @@ export const useAuth = () => {
   const onFormSubmit = async ({ email, password }: AuthProps) => {
     const response = await auth({ email, password })
 
-    try {
-      if (response.statusCode !== 401) {
-        dispatch(loginUser(response))
+    if (response.statusCode !== 401) {
+      toast.success('Logged success!')
+      dispatch(loginUser(response))
+      setTimeout(() => {
         router.push('/')
-      }
-    } catch (err) {
-      console.log(err)
+      }, 2000)
+    } else {
+      toast.error(response.message)
     }
   }
 

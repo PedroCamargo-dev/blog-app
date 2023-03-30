@@ -1,6 +1,7 @@
 import Button from '@/common/components/Button'
 import Form from '@/common/components/Form'
 import Input from '@/common/components/Input'
+import Toast from '@/common/components/Toast'
 import { useAuth } from '../../hooks/useAuth'
 
 export default function Login() {
@@ -8,6 +9,7 @@ export default function Login() {
 
   return (
     <Form onSubmit={handleSubmit(onFormSubmit)} title="Login">
+      <Toast />
       <Input
         label="E-mail"
         type="text"
