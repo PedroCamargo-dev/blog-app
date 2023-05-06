@@ -1,12 +1,15 @@
-FROM alpine:3.14
+FROM node:alpine
 
-WORKDIR /var/www/html
-RUN apk update && apk add nodejs nodejs-dev yarn
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
 
 COPY . .
 
-ENV NODE_ENV=production
+RUN npx next build
 
-RUN yarn install
+EXPOSE 3000
 
-ENTRYPOINT [ "/bin/sh", "-c", "yarn build && yarn start" ]
+CMD ["npm", "start"]
