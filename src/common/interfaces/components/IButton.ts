@@ -1,4 +1,5 @@
 export interface ButtonProps {
-  label: string
+  label: string | any
   extraClass?: string
+  onClick?: any
 }
