@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import NavItem from '../NavItem'
+import { useUser } from '@/common/hooks/useUser'
 
-export default function Dropdown({ title }: any) {
+export default function Dropdown({ title }: string | any) {
   const [open, setOpen] = useState(true)
-  const { user } = useSelector((state: any) => state.userReducer)
+  const [user] = useUser()
 
   return (
     <>
@@ -21,12 +21,15 @@ export default function Dropdown({ title }: any) {
         <NavItem
           extrasClass="py-3 ml-20 hover:underline duration-400"
           title={user.name}
-          href="#"
+          href={{
+            pathname: '/User/[user]',
+            query: { user: user.username },
+          }}
         />
         <NavItem
           extrasClass="py-3 ml-20 hover:underline duration-400"
           title="Publicar novo conteúdo"
-          href="#"
+          href="/Posts/Novo-post"
         />
         <NavItem
           extrasClass="py-3 ml-20 hover:underline duration-400"
