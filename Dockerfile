@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:alpine
 
 WORKDIR /app
 
@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . .
 
-RUN npx next build
-
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD npm run dev
