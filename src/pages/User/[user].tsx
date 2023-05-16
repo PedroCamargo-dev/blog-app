@@ -1,15 +1,11 @@
-import { useSelector } from 'react-redux'
+import Navbar from '@/common/components/Navbar'
+import User from '@/modules/user/presentation/components/user'
 
-const Post = () => {
-  const { user } = useSelector((state) => state.userReducer)
-
+export default function UserPage() {
   return (
     <>
-      <p>name: {user.name}</p>
-      <p>email: {user.email}</p>
-      <p>username: {user.username}</p>
+      <Navbar />
+      <User />
     </>
   )
 }
-
-export default Post
