@@ -17,10 +17,9 @@ import {
   TbLayoutSidebarLeftCollapse,
   TbLayoutSidebarLeftExpand,
 } from 'react-icons/tb'
-import Title from '@/common/components/Title'
 import Input from '@/common/components/Input'
 
-export default function EditorMD() {
+export default function EditorMD({ register }: any) {
   const [markdownSource, setMarkdownSource] = useState('')
   const [hidden, setHidden] = useState()
   const textareaRef = useRef(null)
@@ -71,42 +70,45 @@ export default function EditorMD() {
   return (
     <div
       className={`${
-        !fullScreen ? 'mt-40 w-[878px]' : 'z-100 fixed w-full'
+        !fullScreen ? 'mt-40 w-[878px]' : 'z-100 fixed -mt-28 w-full'
       } grid grid-cols-1`}
     >
-      <div className=" grid h-full grid-cols-2"></div>
       <div className={`${fullScreen ? 'hidden' : 'show'}`}>
-        <Title title="Publicar novo conteudo" extraClass="-ml-5" />
         <Input
           type="text"
           extraClass="border-dark-violet-500 -mb-5 w-full hover:border-dark-violet-100 focus:border-dark-violet-100 duration-300"
           id="title"
           placeholder="Titulo"
-          name={'title'}
+          name={{ ...register('title') }}
         />
       </div>
       <div className="mt-10 flex justify-between bg-dark-blue-500 text-white">
         <div className="flex p-0.5">
           <Button
+            type="button"
             label={<RiHeading />}
             extraClass="p-3 peer hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<BiBold />}
             onClick={() => insertMarkdown('** **')}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<RiItalic />}
             onClick={() => insertMarkdown('* *')}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<GrBlockQuote />}
             onClick={() => insertMarkdown('> ')}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<RiListOrdered />}
             onClick={() =>
               insertMarkdown(`1. First item\n2. Second item\n3. Third item\n`)
@@ -114,6 +116,7 @@ export default function EditorMD() {
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<RiListUnordered />}
             onClick={() =>
               insertMarkdown(`- First item\n- Second item\n- Third item\n`)
@@ -121,16 +124,19 @@ export default function EditorMD() {
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<RiCodeSSlashFill />}
             onClick={() => insertMarkdown('```\n\n```')}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<RiLink />}
             onClick={() => insertMarkdown('[title](https://www.example.com)')}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<RiImage2Line />}
             onClick={() =>
               insertMarkdown(
@@ -142,6 +148,7 @@ export default function EditorMD() {
           <div className="fixed mr-10 mt-9 hidden w-40 flex-col rounded-sm border border-light-grayish-blue bg-white shadow-lg shadow-md hover:flex peer-hover:flex">
             {headers.map((header) => (
               <Button
+                type="button"
                 key={header.level}
                 label={header.label}
                 onClick={() => insertMarkdown(header.markdown)}
@@ -152,16 +159,19 @@ export default function EditorMD() {
         </div>
         <div className="flex p-0.5">
           <Button
+            type="button"
             label={<TbLayoutSidebarLeftCollapse />}
             onClick={() => handleHiddenTextarea()}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={<TbLayoutSidebarLeftExpand />}
             onClick={() => handleHiddenMarkdown()}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
           />
           <Button
+            type="button"
             label={fullScreen ? <BsFullscreenExit /> : <BsFullscreen />}
             onClick={() => handleFullScreen()}
             extraClass="p-3 hover:bg-white hover:text-dark-blue-500 rounded-lg duration-300 w-10"
@@ -175,7 +185,7 @@ export default function EditorMD() {
       >
         <div>
           <textarea
-            ref={textareaRef}
+            {...register('content')}
             onChange={onChange}
             value={markdownSource}
             className={`${
@@ -185,30 +195,16 @@ export default function EditorMD() {
             }`}
           />
         </div>
-        <div>
+        <div className="bg-white">
           <ReactMarkdown
             className={`prose ${
               !fullScreen ? 'h-96 w-full' : 'min-w-screen max-h-screen bg-white'
-            } overflow-y-scroll break-all p-3 ${
+            } overflow-y-scroll break-all p-3	 ${
               hiddenMarkdown ? 'hidden' : 'show'
             }`}
           >
             {markdownSource}
           </ReactMarkdown>
-        </div>
-      </div>
-      <div className="mt-8 flex justify-end">
-        <div>
-          <Button
-            label="Cencelar"
-            extraClass="border w-32 border-dark-blue-400 py-2.5 text-dark-blue-400 hover:bg-dark-blue-500 hover:text-white focus:bg-dark-blue-500 focus:text-white mr-3"
-          />
-        </div>
-        <div>
-          <Button
-            label="Publicar"
-            extraClass="border w-32 border-dark-violet-400 py-2.5 text-dark-violet-400 hover:bg-dark-violet-500 hover:text-white focus:bg-dark-violet-500 focus:text-white"
-          />
         </div>
       </div>
     </div>
