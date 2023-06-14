@@ -5,13 +5,13 @@ import Button from '@/common/components/Button'
 import Toast from '@/common/components/Toast'
 
 export default function NewPost() {
-  const [register, handleSubmit, onFormSubmit] = useNewPost()
+  const [register, handleSubmit, errors, onFormSubmit] = useNewPost()
 
   return (
     <Form onSubmit={handleSubmit(onFormSubmit)} title="Publicar novo conteudo">
       <Toast />
       <div className="-mt-40 flex justify-center">
-        <EditorMD register={register} />
+        <EditorMD register={register} errors={errors} />
       </div>
       <div className="mt-8 flex justify-end">
         <div className="flex">

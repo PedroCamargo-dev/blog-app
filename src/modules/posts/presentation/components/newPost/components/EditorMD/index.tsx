@@ -19,7 +19,7 @@ import {
 } from 'react-icons/tb'
 import Input from '@/common/components/Input'
 
-export default function EditorMD({ register }: any) {
+export default function EditorMD({ register, errors }: any) {
   const [markdownSource, setMarkdownSource] = useState('')
   const [hidden, setHidden] = useState()
   const textareaRef = useRef(null)
@@ -81,6 +81,11 @@ export default function EditorMD({ register }: any) {
           placeholder="Titulo"
           name={{ ...register('title') }}
         />
+        {errors.title?.message && (
+          <p className="mb-2 mr-3 grid justify-items-end text-sm text-vivid-red">
+            {errors.title.message}
+          </p>
+        )}
       </div>
       <div className="mt-10 flex justify-between bg-dark-blue-500 text-white">
         <div className="flex p-0.5">
@@ -207,6 +212,11 @@ export default function EditorMD({ register }: any) {
           </ReactMarkdown>
         </div>
       </div>
+      {errors.content?.message && (
+        <p className="mb-2 mr-3 grid justify-items-end text-sm text-vivid-red">
+          {errors.content.message}
+        </p>
+      )}
     </div>
   )
 }
